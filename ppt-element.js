@@ -75,6 +75,11 @@ class PptElement extends LitElement {
       title: '¿Qué NO es <strong>lit-html</strong>?',
       p: ['No es un framework.', 'No tiene un modelo de componentes.', ' Puede usarse en cualquier proyecto.']
     };
+    this.item1 = {
+      number: '1',
+      titleh1:'lit-html',
+      titleh2:'<strong>Templates HTML en Javascript <span class="line">muy bien</span> óptimamente hechos</strong>'
+    };
     this.item2 = {
       title: '¿Qué es <strong>lit-html</strong>?',
       p: ['Una librería de templating HTML que se caracteriza por su eficiencia en términos de:'],
@@ -189,6 +194,16 @@ class PptElement extends LitElement {
     this.item16 = {
       title: 'Ejemplo de <strong>classMap</strong>'
     }
+    this.item17 = {
+      title: '<strong>Web component</strong> con lit-html',
+      p:[],
+      src: ['../images/code11.png']
+    };
+    this.item18 = {
+      number: '2',
+      titleh1:'LitElement',
+      titleh2:'<strong>The <span class="line">king</span>PolymerElement is dead, long live the <span class="line">king</span>LitElement!</strong>'
+    };
     window.addEventListener('keydown', this.handlekeypress.bind(this));
     this.promise = (()=>{
       let res, rej;
@@ -860,6 +875,22 @@ class PptElement extends LitElement {
     `
   }
 
+  introduccion(item){
+   const titleh1 = html `${this.returnTitle(item.titleh1)}`;
+   const titleh2 = html `${this.returnTitle(item.titleh2)}`;
+   return html`
+    <section class="bg-apple slide aligncenter" style="display:none">
+          <div class="header block">
+          <div class="title">
+          <span class="circle">${item.number}</span>
+          <h1>${titleh1}</h1>
+          <h2>${titleh2}</h2>
+          </div>
+          </div>
+          <div class="footer"></div>
+        </section>`
+  }
+
   render() {
     return html `
     <style>${this.constructor.shadyStyles}</style>
@@ -1041,16 +1072,7 @@ class PptElement extends LitElement {
             </div>
             <div class="footer color"></div>
         </section>
-        <section class="bg-apple slide aligncenter" style="display:none">
-          <div class="header block">
-          <div class="title">
-          <span class="circle">1</span>
-          <h1>lit-html</h1>
-          <h2><strong>Templates HTML en Javascript <span class="line">muy bien</span> óptimamente hechos</strong></h2>
-          </div>
-          </div>
-          <div class="footer"></div>
-        </section>
+        ${this.introduccion(this.item1)}
         ${this.listCenter(this.item)}
         ${this.listCenter(this.item2)}
         ${this.preCodeCenter(this.item3)}
@@ -1067,6 +1089,8 @@ class PptElement extends LitElement {
         ${this.codeExample2(this.item16)}
         ${this.listCenter(this.item13)}
         ${this.iframeExample(this.item14)}
+        ${this.preCodeCenter(this.item17)}
+        ${this.introduccion(this.item18)}
       </article>
     </main>
     `;

@@ -355,6 +355,9 @@
       min-height: 50px;
       border-bottom: 1px solid var(--second-color, gray);
       position: relative;
+      .line {
+        text-decoration: line-through;
+      }
       .title {
         padding: 16px;
         background-color: #FFF;
@@ -614,7 +617,7 @@
           }
           &.noVis {
             opacity: 1;
-            transform: scale(0);
+            transform: translateY(0px) scale(0);
           }
         }
       }
