@@ -1,0 +1,15 @@
+{
+  "name": "ppt-element",
+  "description": "Element for presentations",
+  "main": "ppt-element.js",
+  "dependencies": {
+    "lit-element": "^2.0.1",
+    "polymer-cli": "^1.9.6"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.1",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "wct-mocha": "^1.0.0"
+  }
+}

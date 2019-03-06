@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <!-- Register service worker if supported. -->
+  <!--
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+  </script>
+  -->
+  
+  <!-- Load polyfills -->
+  <script 
+    src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
+    defer>
+  </script> 
+
+  <!-- Load components via WebComponents.waitFor -->
+  
+  <!-- Change stuff here for your app -->
+  <meta name="description" content="start-lit-element">
+  <meta name="theme-color" content="#ffffff">
+  <title>start-lit-element</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="shortcut icon" href="/manifest/favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+</head>
+<body>
+
+  <p id="molo">
+    
+  </p>
+
+  <div class="container">
+    
+  </div>
+
+  <!-- 
+    To configure starting state of the checkbox from markup: 
+    <start-lit-element pie="true"> 
+  -->
+ <script type="module">
+   import {html, render} from 'lit-html-mod/lit-html';
+   window.addEventListener("message", receiveMessage, false);
+
+    
+    let sayHello = (name) => html`<h1>Hello ${name}</h1>`;
+
+
+    let iterador = render(sayHello('World'), document.querySelector('.container'));
+    function receiveMessage(event)
+    {
+      let ite = iterador.next();
+      if(ite.done){
+        iterador = render(sayHello('David'), document.querySelector('.container'));
+      } else {
+        console.log(document.querySelector('.container').innerHTML);
+        document.querySelector('#molo').innerText =  JSON.stringify(ite.value);
+      }
+    }
+
+ </script>
+</body>
