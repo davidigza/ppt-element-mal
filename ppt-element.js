@@ -208,7 +208,68 @@ class PptElement extends LitElement {
       title: 'Web component con <strong>LitElement</strong>',
       imgBlockLeft:['../images/code12.png'],
       imgBlockRight:['../images/code13.png']
+    };
+    this.item20 = {
+      title: 'render',
+      items:[
+        {li: 'Render asíncrono, actualización de propiedades en lote.',items:[]}
+      ,{li:'Template debe escribirse como una función pura de las propiedades del componente, UI = f(state) tal que:',items:['No cambia el estado del componente',
+      'No tiene efectos colaterales',
+      'Sólo depende de las propiedades del componente',
+      'Siempre devuelve lo mismo si los propiedades no han cambiado']},
+      {li:'Consecuencias:',items:['Template declarativo','Mejor experiencia para el desarrollador']}]
     }
+    this.item21 = {
+      title : 'lit-html + LitElement',
+      items: [
+        {li:'Vale todo lo mismo que usamos  en lit-html:',items:['Texto: <p>${...}</p>',
+        'Atributo: <p id="${...}"></p>',
+        'Atributo booleano: ?checked="${...}"',
+        'Propiedad: .value="${...}"',
+        'Handler de eventos: @event="${...}"',
+        'Composión, iteraciones, condicionales, directivas']},
+        {li:'Y se agregan las características básicas de web components',items:['Shadow DOM => createRenderRoot',
+        'Light DOM, slots']},
+        {li:'Más beneficios de LitElement:',items:[
+          'Re-render asíncrono y eficiente cuando cambian las propiedades',
+          'Ciclo de vida (renderizado)']},
+      ]
+    };
+    this.item22 = {
+      title: 'Propiedades',
+      p:[],
+      src: ['../images/code14.png']
+    };
+    this.item23 = {
+      title: 'Ciclo de vida de un renderizado',
+      p:[],
+      src:['../images/code15.png'],
+      shadow: 'noShadow'
+    };
+    this.item27={
+      title: 'Lit en acción',
+      p:[],
+      src:[''],
+      shadow: 'noShadow'
+    };
+    this.item24= {
+      title: 'Polymer 2 a LitElement - <strong>Bidings</strong>',
+      p:[],
+      src:['../images/code16.png'],
+      shadow: 'noShadow'
+    };
+    this.item25 = {
+      title: 'Polymer 2 a LitElement - <strong>Properties</strong>',
+      p:[],
+      src:['../images/code17.png'],
+      shadow: 'noShadow'
+    };
+    this.item26 ={
+      title: 'Polymer 2 a LitElement - <strong>Directivas</strong>',
+      p:[],
+      src:['../images/code18.png'],
+      shadow: 'noShadow'
+    };
     window.addEventListener('keydown', this.handlekeypress.bind(this));
     this.promise = (()=>{
       let res, rej;
@@ -304,6 +365,21 @@ class PptElement extends LitElement {
     document.removeEventListener('click',window.until);
   }
 
+  debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
+
 
   goBack() {
     if (this.current === '0') {
@@ -342,6 +418,7 @@ class PptElement extends LitElement {
       } else {
         this.iframeBool = false;
         this.goFoward();
+        return;
       }     
     }
     if (this.current === this.currentLimit) {
@@ -385,7 +462,7 @@ class PptElement extends LitElement {
 
   preCodeCenter(item) {
     const data = html `${item.p.map((text)=>html`<p class="text">${this.returnTitle(text)}</p>`)}`;
-    const dataImg = html `${item.src ? item.src.map((src)=>html`<img src="${src}" alt="code"/>`) : ''}`;
+    const dataImg = html `${item.src ? item.src.map((src)=>html`<img class="${item.shadow}" src="${src}" alt="code"/>`) : ''}`;
     return html `
     <section class="bg-apple slide" style="display:none">
       ${this.header(item.title)}
@@ -630,6 +707,28 @@ class PptElement extends LitElement {
     </section>`
   }
 
+  listItems(item){
+    return html`
+    <section class="bg-apple slide iframe" style="display:none">
+      ${this.header(item.title)}
+      <div class="wrap">
+        <div class="card">
+          <ul class="list">
+          ${item.items.map((item)=>{
+            return html`
+            <li class="list-item">${item.li}
+                <ul class="list-item-list">
+                  ${item.items.map((item)=>html`<li class="list-item-list-sub">${item}</li>`)}
+                </ul>
+            </li>`
+          })}
+          </ul> 
+        </div>  
+      </div>
+      </section>
+    `;
+  }
+
   render() {
     return html `
     <style>${this.constructor.shadyStyles}</style>
@@ -831,6 +930,14 @@ class PptElement extends LitElement {
         ${this.preCodeCenter(this.item17)}
         ${this.intro(this.item18)}
         ${this.twoImages(this.item19)}
+        ${this.listItems(this.item20)}
+        ${this.listItems( this.item21)}
+        ${this.preCodeCenter(this.item22)}
+        ${this.preCodeCenter(this.item23)}
+        ${this.preCodeCenter(this.item27)}
+        ${this.preCodeCenter(this.item24)}
+        ${this.preCodeCenter(this.item25)}
+        ${this.preCodeCenter(this.item26)}
       </article>
     </main>
     `;

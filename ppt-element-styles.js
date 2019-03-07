@@ -501,6 +501,19 @@ export default css`
             font-family: 'Quattrocento', serif;
             font-size: 2.5rem;
             letter-spacing: 2px; }
+            :host section .wrap .card .list-item-list {
+              padding: 1.5rem;
+              list-style: none; }
+              :host section .wrap .card .list-item-list-sub {
+                font-size: 2rem; }
+              :host section .wrap .card .list-item-list-sub::before {
+                content: '';
+                display: inline-block;
+                width: 12px;
+                height: 12px;
+                border-radius: 7.5px;
+                border: 1px solid var(--primary-color, yellow);
+                margin-right: 1rem; }
           :host section .wrap .card .list-item::before {
             content: '';
             display: inline-block;
@@ -512,6 +525,8 @@ export default css`
         :host section .wrap .card img {
           margin-top: 1rem;
           box-shadow: -30px 30px 26px -10px rgba(0, 0, 0, 0.54); }
+          :host section .wrap .card img.noShadow {
+            box-shadow: none; }
       :host section .wrap.grid {
         flex-wrap: wrap;
         justify-content: center; }
