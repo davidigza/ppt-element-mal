@@ -204,6 +204,11 @@ class PptElement extends LitElement {
       titleh1:'LitElement',
       titleh2:'<strong>The <span class="line">king</span>PolymerElement is dead, long live the <span class="line">king</span>LitElement!</strong>'
     };
+    this.item19 = {
+      title: 'Web component con <strong>LitElement</strong>',
+      imgBlockLeft:['../images/code12.png'],
+      imgBlockRight:['../images/code13.png']
+    }
     window.addEventListener('keydown', this.handlekeypress.bind(this));
     this.promise = (()=>{
       let res, rej;
@@ -325,7 +330,6 @@ class PptElement extends LitElement {
     if(this.iframeBool){
       if(this.orders >0){
         this.iframe.contentWindow.postMessage('next','http://127.0.0.1:8081');
-        debugger;
         let node = this.shadowRoot.querySelector('.activeli');
         let node2 = this.shadowRoot.querySelector('.active');
         node.classList.remove('activeli');
@@ -357,7 +361,6 @@ class PptElement extends LitElement {
 
   listCenter(item) {
     const data = html `${item.p.map((text)=>html`<p class="text">${text}</p>`)}`;
-    const title = html `${this.returnTitle(item.title)}`;
     const datali = html `${item.li ? item.li.map((li)=>html`<li class="list-item">${li}</li>`) : ''}`;
     const dataImg = html `${item.src ? item.src.map((img)=>html`<img src='${img}'></img>`) : ''}`;
     let classes = {
@@ -368,64 +371,7 @@ class PptElement extends LitElement {
     }
     return html `
       <section class="bg-apple slide" style="display:none">
-      <div class="header">
-        <div class="title">
-          <span class="circle">
-          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-          viewBox="0 0 612.018 612.018"  xml:space="preserve">
-      <g>
-        <path d="M602.832,181.63L432.186,10.984c-12.26-12.26-32.882-12.26-45.142,0l-27.567,27.567c-12.26,12.26-12.26,32.882,0,45.142
-          l3.827,3.827L193.367,213.024l-26.787-26.787c-13.748-13.748-37.488-13.748-51.307,0l-26.717,26.787
-          c-6.874,6.874-10.701,16.087-10.701,25.228c0,9.921,3.827,18.354,10.701,25.228l94.11,94.11L21.942,518.386
-          c-1.559,1.559-3.047,3.827-3.827,6.094L1.249,578.835c-2.268,9.213-1.559,17.575,3.047,22.961
-          c2.268,3.047,7.654,8.433,17.575,8.433c3.827,0,7.654-0.78,12.26-2.268l51.307-16.087c2.268-0.78,3.827-1.559,6.094-3.827
-          l160.724-160.724l98.008,98.008c6.874,6.874,16.087,10.701,25.228,10.701c9.921,0,18.354-3.827,25.228-10.701l26.787-26.787
-          c6.874-6.874,10.701-16.087,10.701-25.228c0-9.921-3.827-18.354-10.701-25.228l-26.787-26.787l125.504-169.937l3.047,3.047
-          c6.094,6.094,13.748,9.213,22.961,9.213c8.433,0,16.866-3.047,22.961-9.213l27.567-27.567
-          C615.091,214.583,615.091,194.669,602.832,181.63z M21.942,595.701v-13.748l0,0V595.701z M73.958,565.866l-42.803,13.748
-          l13.748-42.874l158.457-158.386l29.055,29.055L73.958,565.866z M410.005,473.244c0,2.268-0.78,3.827-2.268,5.386l-26.008,26.008
-          c-3.047,3.047-8.433,3.047-10.701,0l-261.85-261c-1.559-1.559-2.268-3.047-2.268-5.386s0.78-3.827,2.268-5.386l26.787-26.787
-          c1.559-1.559,3.047-2.268,5.386-2.268c2.268,0,3.827,0.78,5.386,2.268l261,261C409.225,468.638,410.005,470.976,410.005,473.244z
-            M380.879,400.535L213.28,232.937l169.937-125.504l123.236,123.236L380.879,400.535z M582.918,207.709l-27.567,27.567
-          c-1.559,1.559-3.827,1.559-5.386,0l-15.307-15.307l0,0L394.698,79.087l0,0l-15.307-15.307c-1.559-1.559-1.559-3.827,0-5.386
-          l26.787-27.567c1.559-0.78,2.268-0.78,3.047-0.78s1.559,0,3.047,0.78l170.646,170.646
-          C584.477,203.882,584.477,206.15,582.918,207.709z"/>
-          </g>
-          <g>
-          </g
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          </svg>
-          </span>
-          <h1>${title}</h1>
-        </div>
-      </div>
+        ${this.header(item.title)}
         <div class="wrap">
            <div class="card">
               <div class="card-title">${data}</div>
@@ -439,68 +385,10 @@ class PptElement extends LitElement {
 
   preCodeCenter(item) {
     const data = html `${item.p.map((text)=>html`<p class="text">${this.returnTitle(text)}</p>`)}`;
-    const title = html `${this.returnTitle(item.title)}`;
     const dataImg = html `${item.src ? item.src.map((src)=>html`<img src="${src}" alt="code"/>`) : ''}`;
     return html `
     <section class="bg-apple slide" style="display:none">
-    <div class="header">
-      <div class="title">
-        <span class="circle">
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="0 0 612.018 612.018"  xml:space="preserve">
-    <g>
-      <path d="M602.832,181.63L432.186,10.984c-12.26-12.26-32.882-12.26-45.142,0l-27.567,27.567c-12.26,12.26-12.26,32.882,0,45.142
-        l3.827,3.827L193.367,213.024l-26.787-26.787c-13.748-13.748-37.488-13.748-51.307,0l-26.717,26.787
-        c-6.874,6.874-10.701,16.087-10.701,25.228c0,9.921,3.827,18.354,10.701,25.228l94.11,94.11L21.942,518.386
-        c-1.559,1.559-3.047,3.827-3.827,6.094L1.249,578.835c-2.268,9.213-1.559,17.575,3.047,22.961
-        c2.268,3.047,7.654,8.433,17.575,8.433c3.827,0,7.654-0.78,12.26-2.268l51.307-16.087c2.268-0.78,3.827-1.559,6.094-3.827
-        l160.724-160.724l98.008,98.008c6.874,6.874,16.087,10.701,25.228,10.701c9.921,0,18.354-3.827,25.228-10.701l26.787-26.787
-        c6.874-6.874,10.701-16.087,10.701-25.228c0-9.921-3.827-18.354-10.701-25.228l-26.787-26.787l125.504-169.937l3.047,3.047
-        c6.094,6.094,13.748,9.213,22.961,9.213c8.433,0,16.866-3.047,22.961-9.213l27.567-27.567
-        C615.091,214.583,615.091,194.669,602.832,181.63z M21.942,595.701v-13.748l0,0V595.701z M73.958,565.866l-42.803,13.748
-        l13.748-42.874l158.457-158.386l29.055,29.055L73.958,565.866z M410.005,473.244c0,2.268-0.78,3.827-2.268,5.386l-26.008,26.008
-        c-3.047,3.047-8.433,3.047-10.701,0l-261.85-261c-1.559-1.559-2.268-3.047-2.268-5.386s0.78-3.827,2.268-5.386l26.787-26.787
-        c1.559-1.559,3.047-2.268,5.386-2.268c2.268,0,3.827,0.78,5.386,2.268l261,261C409.225,468.638,410.005,470.976,410.005,473.244z
-          M380.879,400.535L213.28,232.937l169.937-125.504l123.236,123.236L380.879,400.535z M582.918,207.709l-27.567,27.567
-        c-1.559,1.559-3.827,1.559-5.386,0l-15.307-15.307l0,0L394.698,79.087l0,0l-15.307-15.307c-1.559-1.559-1.559-3.827,0-5.386
-        l26.787-27.567c1.559-0.78,2.268-0.78,3.047-0.78s1.559,0,3.047,0.78l170.646,170.646
-        C584.477,203.882,584.477,206.15,582.918,207.709z"/>
-        </g>
-        <g>
-        </g
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        </svg>
-        </span>
-        <h1>${title}</h1>
-      </div>
-    </div>
+      ${this.header(item.title)}
       <div class="wrap">
          <div class="card">
             <div class="card-title">${data}</div>
@@ -515,68 +403,10 @@ class PptElement extends LitElement {
 
   gridLayout(item) {
     const data = html `${item.p.map((text)=>html`<p class="text">${this.returnTitle(text)}</p>`)}`;
-    const title = html `${this.returnTitle(item.title)}`;
     const dataImg = html `${item.src ? item.src.map((src)=>html`<img src="${src}" alt="code"/>`) : ''}`;
     const templateResult = html `
     <section class="bg-apple slide visible" style="display:none">
-    <div class="header">
-      <div class="title">
-        <span class="circle">
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="0 0 612.018 612.018"  xml:space="preserve">
-    <g>
-      <path d="M602.832,181.63L432.186,10.984c-12.26-12.26-32.882-12.26-45.142,0l-27.567,27.567c-12.26,12.26-12.26,32.882,0,45.142
-        l3.827,3.827L193.367,213.024l-26.787-26.787c-13.748-13.748-37.488-13.748-51.307,0l-26.717,26.787
-        c-6.874,6.874-10.701,16.087-10.701,25.228c0,9.921,3.827,18.354,10.701,25.228l94.11,94.11L21.942,518.386
-        c-1.559,1.559-3.047,3.827-3.827,6.094L1.249,578.835c-2.268,9.213-1.559,17.575,3.047,22.961
-        c2.268,3.047,7.654,8.433,17.575,8.433c3.827,0,7.654-0.78,12.26-2.268l51.307-16.087c2.268-0.78,3.827-1.559,6.094-3.827
-        l160.724-160.724l98.008,98.008c6.874,6.874,16.087,10.701,25.228,10.701c9.921,0,18.354-3.827,25.228-10.701l26.787-26.787
-        c6.874-6.874,10.701-16.087,10.701-25.228c0-9.921-3.827-18.354-10.701-25.228l-26.787-26.787l125.504-169.937l3.047,3.047
-        c6.094,6.094,13.748,9.213,22.961,9.213c8.433,0,16.866-3.047,22.961-9.213l27.567-27.567
-        C615.091,214.583,615.091,194.669,602.832,181.63z M21.942,595.701v-13.748l0,0V595.701z M73.958,565.866l-42.803,13.748
-        l13.748-42.874l158.457-158.386l29.055,29.055L73.958,565.866z M410.005,473.244c0,2.268-0.78,3.827-2.268,5.386l-26.008,26.008
-        c-3.047,3.047-8.433,3.047-10.701,0l-261.85-261c-1.559-1.559-2.268-3.047-2.268-5.386s0.78-3.827,2.268-5.386l26.787-26.787
-        c1.559-1.559,3.047-2.268,5.386-2.268c2.268,0,3.827,0.78,5.386,2.268l261,261C409.225,468.638,410.005,470.976,410.005,473.244z
-          M380.879,400.535L213.28,232.937l169.937-125.504l123.236,123.236L380.879,400.535z M582.918,207.709l-27.567,27.567
-        c-1.559,1.559-3.827,1.559-5.386,0l-15.307-15.307l0,0L394.698,79.087l0,0l-15.307-15.307c-1.559-1.559-1.559-3.827,0-5.386
-        l26.787-27.567c1.559-0.78,2.268-0.78,3.047-0.78s1.559,0,3.047,0.78l170.646,170.646
-        C584.477,203.882,584.477,206.15,582.918,207.709z"/>
-        </g>
-        <g>
-        </g
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        <g>
-        </g>
-        </svg>
-        </span>
-        <h1>${title}</h1>
-      </div>
-    </div>
+      ${this.header(item.title)}
       <div class="wrap grid">
          ${this.repeatedCards(item.cards)}
       </div>
@@ -596,67 +426,9 @@ class PptElement extends LitElement {
   }
 
   codeExample(item){
-    const title = html `${this.returnTitle(item.title)}`;
     return html `
       <section class="bg-apple slide until" style="display:none">
-      <div class="header">
-        <div class="title">
-          <span class="circle">
-          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-          viewBox="0 0 612.018 612.018"  xml:space="preserve">
-      <g>
-        <path d="M602.832,181.63L432.186,10.984c-12.26-12.26-32.882-12.26-45.142,0l-27.567,27.567c-12.26,12.26-12.26,32.882,0,45.142
-          l3.827,3.827L193.367,213.024l-26.787-26.787c-13.748-13.748-37.488-13.748-51.307,0l-26.717,26.787
-          c-6.874,6.874-10.701,16.087-10.701,25.228c0,9.921,3.827,18.354,10.701,25.228l94.11,94.11L21.942,518.386
-          c-1.559,1.559-3.047,3.827-3.827,6.094L1.249,578.835c-2.268,9.213-1.559,17.575,3.047,22.961
-          c2.268,3.047,7.654,8.433,17.575,8.433c3.827,0,7.654-0.78,12.26-2.268l51.307-16.087c2.268-0.78,3.827-1.559,6.094-3.827
-          l160.724-160.724l98.008,98.008c6.874,6.874,16.087,10.701,25.228,10.701c9.921,0,18.354-3.827,25.228-10.701l26.787-26.787
-          c6.874-6.874,10.701-16.087,10.701-25.228c0-9.921-3.827-18.354-10.701-25.228l-26.787-26.787l125.504-169.937l3.047,3.047
-          c6.094,6.094,13.748,9.213,22.961,9.213c8.433,0,16.866-3.047,22.961-9.213l27.567-27.567
-          C615.091,214.583,615.091,194.669,602.832,181.63z M21.942,595.701v-13.748l0,0V595.701z M73.958,565.866l-42.803,13.748
-          l13.748-42.874l158.457-158.386l29.055,29.055L73.958,565.866z M410.005,473.244c0,2.268-0.78,3.827-2.268,5.386l-26.008,26.008
-          c-3.047,3.047-8.433,3.047-10.701,0l-261.85-261c-1.559-1.559-2.268-3.047-2.268-5.386s0.78-3.827,2.268-5.386l26.787-26.787
-          c1.559-1.559,3.047-2.268,5.386-2.268c2.268,0,3.827,0.78,5.386,2.268l261,261C409.225,468.638,410.005,470.976,410.005,473.244z
-            M380.879,400.535L213.28,232.937l169.937-125.504l123.236,123.236L380.879,400.535z M582.918,207.709l-27.567,27.567
-          c-1.559,1.559-3.827,1.559-5.386,0l-15.307-15.307l0,0L394.698,79.087l0,0l-15.307-15.307c-1.559-1.559-1.559-3.827,0-5.386
-          l26.787-27.567c1.559-0.78,2.268-0.78,3.047-0.78s1.559,0,3.047,0.78l170.646,170.646
-          C584.477,203.882,584.477,206.15,582.918,207.709z"/>
-          </g>
-          <g>
-          </g
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          </svg>
-          </span>
-          <h1>${title}</h1>
-        </div>
-      </div>
+      ${this.header(item.title)}
         <div class="wrap">
            <div class="code">
            <pre data-lang='Javascript' class='prettyprint'>
@@ -702,67 +474,9 @@ class PptElement extends LitElement {
   }
 
   codeExample2(item){
-    const title = html `${this.returnTitle(item.title)}`;
     return html `
       <section class="bg-apple slide classMap" style="display:none">
-      <div class="header">
-        <div class="title">
-          <span class="circle">
-          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-          viewBox="0 0 612.018 612.018"  xml:space="preserve">
-      <g>
-        <path d="M602.832,181.63L432.186,10.984c-12.26-12.26-32.882-12.26-45.142,0l-27.567,27.567c-12.26,12.26-12.26,32.882,0,45.142
-          l3.827,3.827L193.367,213.024l-26.787-26.787c-13.748-13.748-37.488-13.748-51.307,0l-26.717,26.787
-          c-6.874,6.874-10.701,16.087-10.701,25.228c0,9.921,3.827,18.354,10.701,25.228l94.11,94.11L21.942,518.386
-          c-1.559,1.559-3.047,3.827-3.827,6.094L1.249,578.835c-2.268,9.213-1.559,17.575,3.047,22.961
-          c2.268,3.047,7.654,8.433,17.575,8.433c3.827,0,7.654-0.78,12.26-2.268l51.307-16.087c2.268-0.78,3.827-1.559,6.094-3.827
-          l160.724-160.724l98.008,98.008c6.874,6.874,16.087,10.701,25.228,10.701c9.921,0,18.354-3.827,25.228-10.701l26.787-26.787
-          c6.874-6.874,10.701-16.087,10.701-25.228c0-9.921-3.827-18.354-10.701-25.228l-26.787-26.787l125.504-169.937l3.047,3.047
-          c6.094,6.094,13.748,9.213,22.961,9.213c8.433,0,16.866-3.047,22.961-9.213l27.567-27.567
-          C615.091,214.583,615.091,194.669,602.832,181.63z M21.942,595.701v-13.748l0,0V595.701z M73.958,565.866l-42.803,13.748
-          l13.748-42.874l158.457-158.386l29.055,29.055L73.958,565.866z M410.005,473.244c0,2.268-0.78,3.827-2.268,5.386l-26.008,26.008
-          c-3.047,3.047-8.433,3.047-10.701,0l-261.85-261c-1.559-1.559-2.268-3.047-2.268-5.386s0.78-3.827,2.268-5.386l26.787-26.787
-          c1.559-1.559,3.047-2.268,5.386-2.268c2.268,0,3.827,0.78,5.386,2.268l261,261C409.225,468.638,410.005,470.976,410.005,473.244z
-            M380.879,400.535L213.28,232.937l169.937-125.504l123.236,123.236L380.879,400.535z M582.918,207.709l-27.567,27.567
-          c-1.559,1.559-3.827,1.559-5.386,0l-15.307-15.307l0,0L394.698,79.087l0,0l-15.307-15.307c-1.559-1.559-1.559-3.827,0-5.386
-          l26.787-27.567c1.559-0.78,2.268-0.78,3.047-0.78s1.559,0,3.047,0.78l170.646,170.646
-          C584.477,203.882,584.477,206.15,582.918,207.709z"/>
-          </g>
-          <g>
-          </g
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          <g>
-          </g>
-          </svg>
-          </span>
-          <h1>${title}</h1>
-        </div>
-      </div>
+       ${this.header(item.title)}
         <div class="wrap">
            <div class="code">
            <pre data-lang='javascript' class='prettyprint'>
@@ -791,20 +505,10 @@ class PptElement extends LitElement {
     `
   }
 
-  iframeExample(item) {
-    const example = html`${item.example.map((item)=>html`<p class="example">${item}</p>`)}`;
-    const data = html `${item.p.map((text,index)=>{
-        if(index === 0 || index === 6){
-          return html`<p class="ul">${text}</p>`
-        }else{
-          return html`<p class="li activeli">${text}</p>`
-        }
-      })
-    }`;
-    const title = html `${this.returnTitle(item.title)}`;
+  header(ti){
+    const title = html `${this.returnTitle(ti)}`;
     return html `
-      <section class="bg-apple slide iframe" style="display:none">
-      <div class="header">
+    <div class="header">
         <div class="title">
           <span class="circle">
           <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -862,6 +566,23 @@ class PptElement extends LitElement {
           <h1>${title}</h1>
         </div>
       </div>
+    `
+    
+  }
+
+  iframeExample(item) {
+    const example = html`${item.example.map((item)=>html`<p class="example">${item}</p>`)}`;
+    const data = html `${item.p.map((text,index)=>{
+        if(index === 0 || index === 6){
+          return html`<p class="ul">${text}</p>`
+        }else{
+          return html`<p class="li activeli">${text}</p>`
+        }
+      })
+    }`;
+    return html `
+      <section class="bg-apple slide iframe" style="display:none">
+        ${this.header(item.title)}
         <div class="wrap">
            <div class="code">
             <div class="exam">${example}</div>
@@ -875,20 +596,38 @@ class PptElement extends LitElement {
     `
   }
 
-  introduccion(item){
+  twoImages(item){
+    return html`
+    <section class="bg-apple slide aligncenter" style="display:none">
+      ${this.header(item.title)}
+      <div class="wrap">
+           <div class="imgs">
+              ${item.imgBlockLeft.map((img)=>html`<img src="${img}" alt="${img}"/>`)}
+           </div>
+           <div class="imgs">
+              ${item.imgBlockRight.map((img)=>html`<img src="${img}" alt="${img}"/>`)}          
+           </div>
+     </div>
+    </section>
+    `
+  }
+  
+
+
+  intro(item){
    const titleh1 = html `${this.returnTitle(item.titleh1)}`;
    const titleh2 = html `${this.returnTitle(item.titleh2)}`;
    return html`
     <section class="bg-apple slide aligncenter" style="display:none">
-          <div class="header block">
-          <div class="title">
+      <div class="header block">
+        <div class="title">
           <span class="circle">${item.number}</span>
           <h1>${titleh1}</h1>
           <h2>${titleh2}</h2>
-          </div>
-          </div>
-          <div class="footer"></div>
-        </section>`
+        </div>
+      </div>
+      <div class="footer"></div>
+    </section>`
   }
 
   render() {
@@ -1072,7 +811,7 @@ class PptElement extends LitElement {
             </div>
             <div class="footer color"></div>
         </section>
-        ${this.introduccion(this.item1)}
+        ${this.intro(this.item1)}
         ${this.listCenter(this.item)}
         ${this.listCenter(this.item2)}
         ${this.preCodeCenter(this.item3)}
@@ -1090,7 +829,8 @@ class PptElement extends LitElement {
         ${this.listCenter(this.item13)}
         ${this.iframeExample(this.item14)}
         ${this.preCodeCenter(this.item17)}
-        ${this.introduccion(this.item18)}
+        ${this.intro(this.item18)}
+        ${this.twoImages(this.item19)}
       </article>
     </main>
     `;

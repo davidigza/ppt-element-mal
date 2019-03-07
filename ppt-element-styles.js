@@ -301,6 +301,8 @@ export default css`
       min-height: 50px;
       border-bottom: 1px solid var(--second-color, gray);
       position: relative; }
+      :host section .header .line {
+        text-decoration: line-through; }
       :host section .header .title {
         padding: 16px;
         background-color: #FFF;
@@ -343,12 +345,14 @@ export default css`
       flex-direction: row;
       justify-content: center;
       align-items: flex-start; }
+      :host section .wrap .imgs {
+        padding: 2.5rem; }
       :host section .wrap .code {
         flex: 1;
         padding: 1rem;
         height: calc(100% - 2rem);
         display: block;
-        margin-top: 40px; }
+        margin-top: 10px; }
         :host section .wrap .code .code,
         :host section .wrap .code pre {
           font-family: 'Source Code Pro';
@@ -356,7 +360,7 @@ export default css`
           color: #fafafa;
           font-size: 20px;
           padding: 10px;
-          margin-top: 40px; }
+          margin-top: 10px; }
           :host section .wrap .code .code:before,
           :host section .wrap .code pre:before {
             display: block;
@@ -392,7 +396,7 @@ export default css`
         padding: 1rem;
         height: calc(100% - 2rem);
         display: block;
-        margin-top: 40px; }
+        margin-top: 1x0px; }
         :host section .wrap .result iframe {
           display: block;
           width: 100%;
@@ -539,8 +543,8 @@ export default css`
               font-size: 1.2rem; }
           :host section .wrap.grid .card.noVis {
             opacity: 1;
-            -webkit-transform: scale(0);
-                    transform: scale(0); }
+            -webkit-transform: translateY(0px) scale(0);
+                    transform: translateY(0px) scale(0); }
       :host section .wrap.present {
         display: flex;
         align-items: center;

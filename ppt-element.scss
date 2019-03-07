@@ -407,12 +407,15 @@
       flex-direction: row;
       justify-content: center;
       align-items: flex-start;
+      .imgs{
+       padding: 2.5rem;
+      }
       .code {
         flex: 1;
         padding: 1rem;
         height: calc(100% - 2rem);
         display: block;
-        margin-top: 40px;
+        margin-top: 10px;
         .code,
         pre {
           font-family: 'Source Code Pro';
@@ -420,7 +423,7 @@
           color: #fafafa;
           font-size: 20px;
           padding: 10px;
-          margin-top: 40px;
+          margin-top: 10px;
           &:before {
             display: block;
             width: calc(100%);
@@ -463,7 +466,7 @@
         padding: 1rem;
         height: calc(100% - 2rem);
         display: block;
-        margin-top: 40px;
+        margin-top: 1x0px;
         iframe{
           display: block; width: 100%; height: 100%; border: none;
         }
