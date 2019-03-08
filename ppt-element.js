@@ -270,6 +270,21 @@ class PptElement extends LitElement {
       src:['../images/code18.png'],
       shadow: 'noShadow'
     };
+    this.item28 = {
+      title: '¿Quién lo usa?',
+      p:[],
+      src:['../images/code19.png'],
+      li:['BBVA','Nordea Bank','Rabobank','ING','CityBox','SAP','British Gas','Williams Somona']
+    };
+    this.item29 = {
+      title:'Herramientas y utilidades',
+      li:['VS CODE plugins','Polymer CLI','OpenWC','PWA toolkit '],
+      p:[]   
+    };
+    this.item30 = {
+      title:'El futuro',
+      p:['SSR','Node','Está todo por hacer']
+    }
     window.addEventListener('keydown', this.handlekeypress.bind(this));
     this.promise = (()=>{
       let res, rej;
@@ -473,9 +488,24 @@ class PptElement extends LitElement {
               ${dataImg}
             </div>
          </div>
+         ${this.addList(item)}
       </div>
     </section>
     `;
+  }
+
+  addList(item){
+    if(item.li){
+      return html`
+        <div class="card">
+          <ul class="list">
+             ${item.li.map((item)=> html `<li class="list-item">${item}</li>`)}
+          </ul>
+        </div>
+      `;
+    } else {
+      return html``;
+    }
   }
 
   gridLayout(item) {
@@ -938,6 +968,9 @@ class PptElement extends LitElement {
         ${this.preCodeCenter(this.item24)}
         ${this.preCodeCenter(this.item25)}
         ${this.preCodeCenter(this.item26)}
+        ${this.preCodeCenter(this.item28)}
+        ${this.preCodeCenter(this.item29)}
+        ${this.listCenter(this.item30)}
       </article>
     </main>
     `;
