@@ -253,7 +253,7 @@ class PptElement extends LitElement {
       shadow: 'noShadow'
     };
     this.item24= {
-      title: 'Polymer 2 a LitElement - <strong>Bidings</strong>',
+      title: 'Polymer 2 a LitElement - <strong>Bindings</strong>',
       p:[],
       src:['../images/code16.png'],
       shadow: 'noShadow'
@@ -274,6 +274,7 @@ class PptElement extends LitElement {
       title: '¿Quién lo usa?',
       p:[],
       src:['../images/code19.png'],
+      imgClass:'addsize',
       li:['BBVA','Nordea Bank','Rabobank','ING','CityBox','SAP','British Gas','Williams Somona']
     };
     this.item29 = {
@@ -284,6 +285,37 @@ class PptElement extends LitElement {
     this.item30 = {
       title:'El futuro',
       p:['SSR','Node','Está todo por hacer']
+    };
+    this.item31 = {
+      title:'Recursos',
+      p:[],
+      class: 'small',
+      li:['<strong>Sitio oficial lit-html</strong> <a href="https://lit-html.polymer-project.org">https://lit-html.polymer-project.org</a>',
+      '<strong>Sitio oficial LitElement</strong> <a href="https://lit-element.polymer-project.org">https://lit-element.polymer-project.org</a>',
+      '<strong>Slack de Polymer</strong> <a href="polymer.slack.com">polymer.slack.com</a>',
+      '<strong>Awesome lit-html</strong> <a href="https://github.com/web-padawan/awesome-lit-html">https://github.com/web-padawan/awesome-lit-html</a>',
+      '<strong>Material web components (LitElement)</strong> <a href="https://github.com/material-components/material-components-web-components">https://github.com/material-components/material-components-web-components</a>',
+      '<strong>SAP UI5 web components (lit-html)</strong> <a href="https://sap.github.io/ui5-webcomponents/">https://sap.github.io/ui5-webcomponents/</a>',
+      '<strong>Efficient, Expressive, and Extensible HTML Templates (Polymer Summit 2017)</strong> <a href="https://www.youtube.com/watch?v=ruql541T7gc">https://www.youtube.com/watch?v=ruql541T7gc</a>',
+      '<strong>lit-HTML (Chrome Dev Summit 2017)</strong> <a href="https://www.youtube.com/watch?v=Io6JjgckHbg">https://www.youtube.com/watch?v=Io6JjgckHbg</a>',
+      '<strong>VDOM vs lit-html - HTTP203</strong> <a href="https://www.youtube.com/watch?v=uCHZJy2n8Qs">https://www.youtube.com/watch?v=uCHZJy2n8Qs</a>',
+      '<strong>A night experimenting with lit-html</strong> <a href="https://medium.com/@lucamezzalira/a-night-experimenting-with-lit-html-585a8c69892a">https://medium.com/@lucamezzalira/a-night-experimenting-with-lit-html-585a8c69892a</a>']
+    };
+    this.item32 = {
+      title: 'Créditos',
+      p:[],
+      li:['Presentación basada en la template Viola de <strong>SlidesCarnival</strong>', 'Código formateado con <strong>SlidesCodeHighlighter</strong>']
+    };
+    this.item34={
+      title: 'Gracias',
+      p:['¿Preguntas?'],
+      classP: 'grow'
+    }
+    this.item35= {
+      title:'Es el momento',
+      p:[],
+      src:['../images/code20.png'],
+      shadow: 'noShadow'
     }
     window.addEventListener('keydown', this.handlekeypress.bind(this));
     this.promise = (()=>{
@@ -300,7 +332,7 @@ class PptElement extends LitElement {
       return promise;
 
     })();
-    this.classes = { container: true, animationBackground: true};
+    this.classes = { container: true, animationBackground: false, red:false};
     this.orders = 10;
     this.iframeBool = false;
   }
@@ -452,8 +484,8 @@ class PptElement extends LitElement {
   }
 
   listCenter(item) {
-    const data = html `${item.p.map((text)=>html`<p class="text">${text}</p>`)}`;
-    const datali = html `${item.li ? item.li.map((li)=>html`<li class="list-item">${li}</li>`) : ''}`;
+    const data = html `${item.p.map((text)=>html`<p class="text ${item.classP}">${text}</p>`)}`;
+    const datali = html `${item.li ? item.li.map((li)=>html`<li class="list-item ${item.class}">${this.returnTitle(li)}</li>`) : ''}`;
     const dataImg = html `${item.src ? item.src.map((img)=>html`<img src='${img}'></img>`) : ''}`;
     let classes = {
       list: true
@@ -477,7 +509,7 @@ class PptElement extends LitElement {
 
   preCodeCenter(item) {
     const data = html `${item.p.map((text)=>html`<p class="text">${this.returnTitle(text)}</p>`)}`;
-    const dataImg = html `${item.src ? item.src.map((src)=>html`<img class="${item.shadow}" src="${src}" alt="code"/>`) : ''}`;
+    const dataImg = html `${item.src ? item.src.map((src)=>html`<img class="${item.shadow} ${item.imgClass}" src="${src}" alt="code"/>`) : ''}`;
     return html `
     <section class="bg-apple slide" style="display:none">
       ${this.header(item.title)}
@@ -606,10 +638,20 @@ class PptElement extends LitElement {
            <div class="${classMap(this.classes)}">    
            
             </div>
+            <button @click="${this.setRed}" class="button-success">red</button>
+            <button @click="${this.animate}" class="button-success">animate</button>
            </div>
         </div>
       </section>
     `
+  }
+
+  setRed(){
+    this.classes={ container: true, animationBackground: false, red: true};
+  }
+
+  animate(){
+    this.classes={ container: true, animationBackground: true, red:false};
   }
 
   header(ti){
@@ -735,6 +777,31 @@ class PptElement extends LitElement {
       </div>
       <div class="footer"></div>
     </section>`
+  }
+
+  gifDatacenter(item){
+    return html`
+    <section class="bg-apple slide iframe" style="display:none">
+      ${this.header(item.title)}
+      <div class="wrap">
+        <div class="card flex">
+          <div class="card-image"  style="height: 300px;">
+            <img src="../images/code21.png" alt=""/>
+          </div>
+          <div class="card-image" style="height: 300px;">
+            <img  src="../images/code3.gif" alt="img" class="noShadow"/>
+            <img  src="../images/code1.gif" alt="img" class="noShadow"/>
+          </div>
+        </div>
+        <div class="card flex column">
+            <img  src="../images/code2.gif" alt="img" class="noShadow"/>
+        </div> 
+      </div>
+      <div class="footer color">
+         <span>Fuente: "A night experimenting with Lit-HTML…" Lucca Mezzalira - https://medium.com/@lucamezzalira/a-night-experimenting-with-lit-html-585a8c69892a</span>
+      </div>
+      </section>
+    `;
   }
 
   listItems(item){
@@ -964,13 +1031,17 @@ class PptElement extends LitElement {
         ${this.listItems( this.item21)}
         ${this.preCodeCenter(this.item22)}
         ${this.preCodeCenter(this.item23)}
-        ${this.preCodeCenter(this.item27)}
+        ${this.gifDatacenter(this.item27)}
         ${this.preCodeCenter(this.item24)}
         ${this.preCodeCenter(this.item25)}
         ${this.preCodeCenter(this.item26)}
         ${this.preCodeCenter(this.item28)}
         ${this.preCodeCenter(this.item29)}
         ${this.listCenter(this.item30)}
+        ${this.preCodeCenter(this.item35)}
+        ${this.listCenter(this.item31)}
+        ${this.listCenter(this.item34)}
+        ${this.listCenter(this.item32)}
       </article>
     </main>
     `;

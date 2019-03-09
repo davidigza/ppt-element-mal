@@ -265,11 +265,9 @@ export default css`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-height: 100vh;
     min-height: 100vh;
-    /*Fullscreen*/
-    /* Prototyping? min-height: 720px (Baseline: 8px = .8rem)*/
     padding: 2.4rem;
-    /*Fixed/Visible header? padding-top: 12rem; */
     page-break-after: always;
     position: relative;
     word-wrap: break-word; }
@@ -396,7 +394,20 @@ export default css`
         padding: 1rem;
         height: calc(100% - 2rem);
         display: block;
-        margin-top: 1x0px; }
+        margin-top: 10px; }
+        :host section .wrap .result .button-success,
+        :host section .wrap .result .button-error,
+        :host section .wrap .result .button-warning,
+        :host section .wrap .result .button-secondary {
+          color: white;
+          border-radius: 4px;
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
+        :host section .wrap .result .button-success {
+          background: #1cb841;
+          /* this is a green */
+          height: 2rem;
+          width: 7rem;
+          margin: 1rem; }
         :host section .wrap .result iframe {
           display: block;
           width: 100%;
@@ -417,6 +428,10 @@ export default css`
             background-size: 400% 400%;
             -webkit-animation: Gradient 15s ease infinite;
                     animation: Gradient 15s ease infinite;
+            height: 300px;
+            margin: 40px auto; }
+          :host section .wrap .result .container.red {
+            background-color: red;
             height: 300px;
             margin: 40px auto; }
 
@@ -480,11 +495,27 @@ export default css`
         -webkit-transform: translateY(0px);
                 transform: translateY(0px);
         max-width: 80%; }
+        :host section .wrap .card.flex {
+          flex: 2; }
+          :host section .wrap .card.flex.column {
+            flex: 1; }
+          :host section .wrap .card.flex img {
+            background: none;
+            box-shadow: none;
+            height: 100%; }
+        :host section .wrap .card-image {
+          display: flex; }
+          :host section .wrap .card-image img {
+            background: none;
+            box-shadow: none; }
         :host section .wrap .card .text {
           margin-top: 1rem;
           font-family: 'Quattrocento', serif;
           font-size: 2rem;
           letter-spacing: 2px; }
+          :host section .wrap .card .text.grow {
+            font-size: 3.5rem;
+            padding: 3rem; }
           :host section .wrap .card .text .line {
             text-decoration: line-through; }
         :host section .wrap .card .list {
@@ -501,6 +532,8 @@ export default css`
             font-family: 'Quattrocento', serif;
             font-size: 2.5rem;
             letter-spacing: 2px; }
+            :host section .wrap .card .list-item.small {
+              font-size: 1.8rem; }
             :host section .wrap .card .list-item-list {
               padding: 1.5rem;
               list-style: none; }
@@ -527,6 +560,8 @@ export default css`
           box-shadow: -30px 30px 26px -10px rgba(0, 0, 0, 0.54); }
           :host section .wrap .card img.noShadow {
             box-shadow: none; }
+          :host section .wrap .card img.addsize {
+            height: 600px; }
       :host section .wrap.grid {
         flex-wrap: wrap;
         justify-content: center; }
@@ -629,7 +664,11 @@ export default css`
       border-top: 1px solid #cccccc; }
       :host section .footer.color {
         border: none;
-        background-color: var(--primary-color, yellow); }
+        background-color: var(--primary-color, yellow);
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        font-family: monospace; }
   :host section.bg-apple {
     background: #FFF; }
   :host section.bg-trans-dark,
