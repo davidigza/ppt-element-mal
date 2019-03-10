@@ -389,25 +389,25 @@ export default css`
           padding: 8px 0 0 8px; }
           :host section .wrap .code .li.active {
             color: #5856d6; }
+        :host section .wrap .code .button-success,
+        :host section .wrap .code .button-error,
+        :host section .wrap .code .button-warning,
+        :host section .wrap .code .button-secondary {
+          color: white;
+          border-radius: 4px;
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
+        :host section .wrap .code .button-success {
+          background: #1cb841;
+          /* this is a green */
+          height: 2rem;
+          width: 7rem;
+          margin: 1rem; }
       :host section .wrap .result {
         flex: 1;
         padding: 1rem;
         height: calc(100% - 2rem);
         display: block;
         margin-top: 10px; }
-        :host section .wrap .result .button-success,
-        :host section .wrap .result .button-error,
-        :host section .wrap .result .button-warning,
-        :host section .wrap .result .button-secondary {
-          color: white;
-          border-radius: 4px;
-          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
-        :host section .wrap .result .button-success {
-          background: #1cb841;
-          /* this is a green */
-          height: 2rem;
-          width: 7rem;
-          margin: 1rem; }
         :host section .wrap .result iframe {
           display: block;
           width: 100%;

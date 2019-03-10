@@ -633,13 +633,13 @@ class PptElement extends LitElement {
 
               </code>
            </pre>
+           <button @click="${this.setRed}" class="button-success">red</button>
+           <button @click="${this.animate}" class="button-success">animate</button>
            </div>
            <div class="result">
            <div class="${classMap(this.classes)}">    
            
             </div>
-            <button @click="${this.setRed}" class="button-success">red</button>
-            <button @click="${this.animate}" class="button-success">animate</button>
            </div>
         </div>
       </section>
