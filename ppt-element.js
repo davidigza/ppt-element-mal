@@ -180,10 +180,10 @@ class PptElement extends LitElement {
         '5.-comprueba si el valor ha cambiado y según el tipo de valor aplicará el tipo de directiva que toque.',
         'Segundo renderizado.',
         '1.-Consulta un WeakMap que contiene el nodo con las parts y encuentra las parts',
-        '2.- Setea el pendingValue',
-        '3.-Lanza las directivas en la que compara si ha habido cambio de valor y busca en el part qué parte tiene que cambiar y que tipo de cambio es.',
-        '4.- llama a la funcion update que se ocupa de iterrar hasta encontrar el valor a cambiar y volver a ejecutar su directiva.',
-        '5.-encuentra el nodo de texto y con un  node.textContent cambia su valor'
+        '2.- Lanza las directivas en la que compara si ha habido cambio de valor y busca en el part qué parte tiene que cambiar y que tipo de cambio es.',
+        '3.- Setea el pending value',
+        '4.- llama a la funcion update que se ocupa de iterrar hasta encontrar el valor a cambiar y volver a ejecutar su api de render.',
+        '5.- ha encontrado el nodo de texto y con un  node.textContent cambia su valor'
       ]
     };
     this.item15 = {
@@ -633,13 +633,13 @@ class PptElement extends LitElement {
 
               </code>
            </pre>
+           <button @click="${this.setRed}" class="button-success">red</button>
+           <button @click="${this.animate}" class="button-success">animate</button>
            </div>
            <div class="result">
            <div class="${classMap(this.classes)}">    
            
             </div>
-            <button @click="${this.setRed}" class="button-success">red</button>
-            <button @click="${this.animate}" class="button-success">animate</button>
            </div>
         </div>
       </section>
