@@ -1037,7 +1037,6 @@ class PptElement extends LitElement {
         ${this.preCodeCenter(this.item26)}
         ${this.preCodeCenter(this.item28)}
         ${this.preCodeCenter(this.item29)}
-        // ${this.listCenter(this.item30)}
         ${this.preCodeCenter(this.item35)}
         ${this.listCenter(this.item31)}
         ${this.listCenter(this.item34)}
