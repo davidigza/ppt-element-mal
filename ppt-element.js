@@ -182,7 +182,7 @@ class PptElement extends LitElement {
         '1.-Consulta un WeakMap que contiene el nodo con las parts y encuentra las parts',
         '2.- Lanza las directivas en la que compara si ha habido cambio de valor y busca en el part qué parte tiene que cambiar y que tipo de cambio es.',
         '3.- Setea el pending value',
-        '4.- llama a la funcion update que se ocupa de iterrar hasta encontrar el valor a cambiar y volver a ejecutar su api de render.',
+        '4.- llama a la funcion update que se ocupa de iterar hasta encontrar el valor a cambiar y volver a ejecutar su api de render.',
         '5.- ha encontrado el nodo de texto y con un  node.textContent cambia su valor'
       ]
     };
@@ -347,7 +347,7 @@ class PptElement extends LitElement {
     if (event.keyCode === 37) {
       this.goBack();
     } else if (event.keyCode === 39) {
-      this.goFoward();
+      this.goForward();
     }
   }
 
@@ -439,14 +439,14 @@ class PptElement extends LitElement {
     this.current = this.currentSlide.getAttribute('index');
   }
 
-  goFoward() {
+  goForward() {
     if (this.visible) {
       let node = this.shadowRoot.querySelector('.noVis');
       if (node) {
         node.classList.remove('noVis');
       } else {
         this.changeVisibility();
-        this.goFoward();
+        this.goForward();
       }
       return;
     }
@@ -464,7 +464,7 @@ class PptElement extends LitElement {
         return;
       } else {
         this.iframeBool = false;
-        this.goFoward();
+        this.goForward();
         return;
       }
     }
@@ -622,7 +622,7 @@ class PptElement extends LitElement {
               <code>
 
 
-              this.classes = { container: true, animationBackground: true};
+              this.classes = { container: true, animationBackground: false, red: false};
 
 
               '\html\`&ltdiv class=\${classMap(classes)}&gt;&lt/div&gt;\`;'
@@ -1024,11 +1024,11 @@ class PptElement extends LitElement {
         ${this.codeExample2(this.item16)}
         ${this.listCenter(this.item13)}
         ${this.iframeExample(this.item14)}
-        ${this.preCodeCenter(this.item17)}
         ${this.intro(this.item18)}
+        ${this.preCodeCenter(this.item17)}
         ${this.twoImages(this.item19)}
-        ${this.listItems(this.item20)}
         ${this.listItems( this.item21)}
+        ${this.listItems(this.item20)}
         ${this.preCodeCenter(this.item22)}
         ${this.preCodeCenter(this.item23)}
         ${this.gifDatacenter(this.item27)}
