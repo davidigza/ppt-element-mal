@@ -280,7 +280,7 @@ class PptElement extends LitElement {
     this.item29 = {
       title:'Herramientas y utilidades',
       li:['VS CODE plugins','Polymer CLI','OpenWC','PWA toolkit '],
-      p:[]   
+      p:[]
     };
     this.item30 = {
       title:'El futuro',
@@ -466,7 +466,7 @@ class PptElement extends LitElement {
         this.iframeBool = false;
         this.goFoward();
         return;
-      }     
+      }
     }
     if (this.current === this.currentLimit) {
       return;
@@ -574,24 +574,24 @@ class PptElement extends LitElement {
               <code>
               this.promise = (()=>{
                 let res, rej;
-          
+
                 const promise = new Promise((resolve, reject) => {
                   res = resolve;
                   rej = reject;
                 });
-          
+
                 promise.resolve = res;
                 promise.reject = rej;
-          
+
                 return promise;
-          
+
               })();
 
-              '\${until(this.promise, html\`&ltdiv class="container"&gt    
+              '\${until(this.promise, html\`&ltdiv class="container"&gt
               &ltdiv class="progress progress-infinite"&gt
                 &ltdiv class="progress-bar3" &gt
-                &lt/div&gt                       
-              &lt/div&gt 
+                &lt/div&gt
+              &lt/div&gt
             &lt/div&gt\`)}'
 
               /*  Haz click para resolver la promesa */
@@ -600,11 +600,11 @@ class PptElement extends LitElement {
            </div>
            <div class="result">
            ${until(this.promise, html`
-           <div class="container">    
+           <div class="container">
             <div class="progress progress-infinite">
               <div class="progress-bar3" >
-              </div>                       
-            </div> 
+              </div>
+            </div>
           </div>`)}
            </div>
         </div>
@@ -620,11 +620,11 @@ class PptElement extends LitElement {
            <div class="code">
            <pre data-lang='javascript' class='prettyprint'>
               <code>
-              
+
 
               this.classes = { container: true, animationBackground: true};
-              
-             
+
+
               '\html\`&ltdiv class=\${classMap(classes)}&gt;&lt/div&gt;\`;'
 
                 //¡¡¡No hacer esto!!!
@@ -637,8 +637,8 @@ class PptElement extends LitElement {
            <button @click="${this.animate}" class="button-success">animate</button>
            </div>
            <div class="result">
-           <div class="${classMap(this.classes)}">    
-           
+           <div class="${classMap(this.classes)}">
+
             </div>
            </div>
         </div>
@@ -716,7 +716,7 @@ class PptElement extends LitElement {
         </div>
       </div>
     `
-    
+
   }
 
   iframeExample(item) {
@@ -754,13 +754,13 @@ class PptElement extends LitElement {
               ${item.imgBlockLeft.map((img)=>html`<img src="${img}" alt="${img}"/>`)}
            </div>
            <div class="imgs">
-              ${item.imgBlockRight.map((img)=>html`<img src="${img}" alt="${img}"/>`)}          
+              ${item.imgBlockRight.map((img)=>html`<img src="${img}" alt="${img}"/>`)}
            </div>
      </div>
     </section>
     `
   }
-  
+
 
 
   intro(item){
@@ -795,7 +795,7 @@ class PptElement extends LitElement {
         </div>
         <div class="card flex column">
             <img  src="../images/code2.gif" alt="img" class="noShadow"/>
-        </div> 
+        </div>
       </div>
       <div class="footer color">
          <span>Fuente: "A night experimenting with Lit-HTML…" Lucca Mezzalira - https://medium.com/@lucamezzalira/a-night-experimenting-with-lit-html-585a8c69892a</span>
@@ -819,8 +819,8 @@ class PptElement extends LitElement {
                 </ul>
             </li>`
           })}
-          </ul> 
-        </div>  
+          </ul>
+        </div>
       </div>
       </section>
     `;
@@ -887,7 +887,7 @@ class PptElement extends LitElement {
               <g>
               </g>
           </svg>
-          
+
           </span>
                       <h1>Introducción a  <strong>lit-html</strong> y <strong>LitElement</strong></h1>
                       <h2></h2>
@@ -949,7 +949,7 @@ class PptElement extends LitElement {
 </svg>
               </span>
                 <h2>Bienvenidos</h2>
-              </div> 
+              </div>
             </div>
             <div class="wrap present">
             <div class="card">
@@ -972,8 +972,8 @@ class PptElement extends LitElement {
             </div>
             <div class="card-body">
               <p class="card-text">
-              Arquitecto front end en BBVA Next
-              Soy un fanático de la programación y de la tecnología en general.
+              Arquitecto front end en BBVA Next.
+              Llevo trabajando 17 años en Informática, empece trabajando en Sistemas, para luego pasarme al Back y terminar en el mundo Front, me apasiona la tecnología, y poder realizar cosas que nos acerquen a la ciencia ficción.
               @davidigza
               </p>
             </div>
@@ -998,8 +998,8 @@ class PptElement extends LitElement {
           </div>
           <div class="card-body">
             <p class="card-text">
-            Arquitecto front end en BBVA Next
-            Soy un fanático de la programación y de la tecnología en general.
+            Arquitecto front end en BBVA Next.
+            A lo largo de 2 décadas trabajando en Informática he podido experimentar con una gran cantidad y variedad de tecnologías y lenguajes, pero desde hace 8 que tengo mi corazón puesto en el desarrollo web. Conocí a Polymer cuando todavía no era 1.0 y, desde ese momento, me enamoré de él y su filosofía 'use the platform'
             @julcasans
             </p>
           </div>
@@ -1037,7 +1037,6 @@ class PptElement extends LitElement {
         ${this.preCodeCenter(this.item26)}
         ${this.preCodeCenter(this.item28)}
         ${this.preCodeCenter(this.item29)}
-        ${this.listCenter(this.item30)}
         ${this.preCodeCenter(this.item35)}
         ${this.listCenter(this.item31)}
         ${this.listCenter(this.item34)}
