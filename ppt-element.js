@@ -622,7 +622,7 @@ class PptElement extends LitElement {
               <code>
               
 
-              this.classes = { container: true, animationBackground: true};
+              this.classes = { container: true, animationBackground: false, red: false};
               
              
               '\html\`&ltdiv class=\${classMap(classes)}&gt;&lt/div&gt;\`;'
@@ -1028,8 +1028,8 @@ class PptElement extends LitElement {
         ${this.intro(this.item18)}
         ${this.twoImages(this.item19)}
         ${this.listItems(this.item20)}
-        ${this.listItems( this.item21)}
         ${this.preCodeCenter(this.item22)}
+        ${this.listItems( this.item21)}
         ${this.preCodeCenter(this.item23)}
         ${this.gifDatacenter(this.item27)}
         ${this.preCodeCenter(this.item24)}
@@ -1037,7 +1037,7 @@ class PptElement extends LitElement {
         ${this.preCodeCenter(this.item26)}
         ${this.preCodeCenter(this.item28)}
         ${this.preCodeCenter(this.item29)}
-        ${this.listCenter(this.item30)}
+        // ${this.listCenter(this.item30)}
         ${this.preCodeCenter(this.item35)}
         ${this.listCenter(this.item31)}
         ${this.listCenter(this.item34)}
