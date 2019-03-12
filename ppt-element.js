@@ -98,7 +98,7 @@ class PptElement extends LitElement {
     this.item5 = {
       title: 'Lit-html - <strong> Enfoque funcional </strong>',
       p: ['UI = function(<span class="line">data</span>-state)', 'Enfoque Declarativo, fácil de entender '],
-      src: ['../images/code4.png']
+      src: ['../images/code4a.png']
     };
     this.item6 = {
       title: '¿Cómo funciona?',
