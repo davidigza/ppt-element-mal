@@ -1024,12 +1024,12 @@ class PptElement extends LitElement {
         ${this.codeExample2(this.item16)}
         ${this.listCenter(this.item13)}
         ${this.iframeExample(this.item14)}
-        ${this.preCodeCenter(this.item17)}
         ${this.intro(this.item18)}
+        ${this.preCodeCenter(this.item17)}
         ${this.twoImages(this.item19)}
+        ${this.listItems( this.item21)}
         ${this.listItems(this.item20)}
         ${this.preCodeCenter(this.item22)}
-        ${this.listItems( this.item21)}
         ${this.preCodeCenter(this.item23)}
         ${this.gifDatacenter(this.item27)}
         ${this.preCodeCenter(this.item24)}
